@@ -20,9 +20,9 @@ class TCPSocket < IPSocket
   # :stopdoc:
   alias original_resolv_initialize initialize
   # :startdoc:
-  def initialize(host, serv, *rest)
+  def initialize(host, serv, *rest, **kwargs)
     rest[0] = IPSocket.getaddress(rest[0]) if rest[0]
-    original_resolv_initialize(IPSocket.getaddress(host), serv, *rest)
+    original_resolv_initialize(IPSocket.getaddress(host), serv, *rest, **kwargs)
   end
 end
 
